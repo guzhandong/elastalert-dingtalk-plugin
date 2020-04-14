@@ -26,6 +26,7 @@ class DingTalkAlerter(Alerter):
         self.dingtalk_msgtype = self.rule.get('dingtalk_msgtype', 'text')
         self.dingtalk_isAtAll = self.rule.get('dingtalk_isAtAll', False)
         self.digtalk_title = self.rule.get('dingtalk_title', '')
+        self.digtalk_at_mobiles = self.rule.get('dingtalk_atMobiles')
 
     def format_body(self, body):
         return body.encode('utf8')
@@ -42,6 +43,7 @@ class DingTalkAlerter(Alerter):
                 "content": body
             },
             "at": {
+                "atMobiles":self.digtalk_at_mobiles,        
                 "isAtAll":False
             }
         }
